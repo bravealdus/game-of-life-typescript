@@ -1,19 +1,22 @@
 
+export class BookController {
 
-
-export let BookController = {
-
-    bookTemplate: (book: any) => {
+    bookTemplate(book: any) {
         return `
-<img src="/images/book.png" alt="" />
-<textarea id="${book.id}-name" class="name" disabled>${book.name}</textarea>
-<label for="price">USD</label>
-<input id="${book.id}-price" class="price" name="price" type="text" value="${book.price}" disabled="disabled">
-<br><hr>
-                `;
-    },
+            <img src="/images/book.png" alt="" />
 
-    enableEdit: (id: string) => {
+            <textarea id="${book.id}-name" class="name" disabled>
+              ${book.name}
+            </textarea>
+
+            <label for="price">USD</label>
+            <input id="${book.id}-price" class="price" name="price"
+            type="text" value="${book.price}" disabled="disabled">
+
+            <br><hr>`;
+    }
+
+    enableEdit(id: string) {
         let name = (<HTMLTextAreaElement>document.getElementById(`${id}-name`));
         name.disabled = !name.disabled;
 
@@ -27,20 +30,20 @@ export let BookController = {
         }else{
           edit.textContent = 'Edit';
         }
-    },
+    }
 
-    createBook: (book: any, focus: boolean) => {
+    createBook(book: any, focus: boolean) {
         let elem = document.createElement('div');
         elem.className = 'book';
         elem.id = book.id;
-        elem.innerHTML = BookController.bookTemplate(book);
+        elem.innerHTML = this.bookTemplate(book);
 
         let edit = document.createElement('div');
         edit.className = 'edit';
         edit.id = book.id + '-edit';
         edit.textContent = 'Edit';
         edit.onclick = () => {
-            BookController.enableEdit(book.id);
+            this.enableEdit(book.id);
         };
         elem.appendChild(edit);
 
@@ -55,7 +58,7 @@ export let BookController = {
 
         document.getElementById('books').appendChild(elem);
 
-        if(focus) BookController.enableEdit(book.id);
+        if(focus) this.enableEdit(book.id);
     }
 
 }
