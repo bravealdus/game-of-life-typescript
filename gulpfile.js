@@ -60,7 +60,7 @@ gulp.task('serve', [
     'ts:watch'
 ], function() {
     browserSync({
-        open: false,
+        open: true,
         server: {
             baseDir: 'app'
         },
