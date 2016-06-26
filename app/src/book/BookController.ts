@@ -1,5 +1,14 @@
 
+import { Book } from './BookModel';
+
 export class BookController {
+
+    book: Book;
+
+    constructor(book: Book, focusEdit: boolean) {
+        this.book = book;
+        this.createNewElement(focusEdit);
+    }
 
     bookTemplate(book: any) {
         return `
@@ -20,25 +29,25 @@ export class BookController {
 
         let edit = (<HTMLTextAreaElement>document.getElementById(`${id}-edit`));
         if (!name.disabled) {
-          name.focus();
-          edit.textContent = 'Save';
-        }else{
-          edit.textContent = 'Edit';
+            name.focus();
+            edit.textContent = 'Save';
+        } else {
+            edit.textContent = 'Edit';
         }
     }
 
-    createBook(book: any, focus: boolean) {
+    createNewElement(focusEdit: boolean) {
         let elem = document.createElement('div');
         elem.className = 'book';
-        elem.id = book.id;
-        elem.innerHTML = this.bookTemplate(book);
+        elem.id = this.book.id;
+        elem.innerHTML = this.bookTemplate(this.book);
 
         let edit = document.createElement('div');
         edit.className = 'edit';
-        edit.id = book.id + '-edit';
+        edit.id = this.book.id + '-edit';
         edit.textContent = 'Edit';
         edit.onclick = () => {
-            this.enableEdit(book.id);
+            this.enableEdit(this.book.id);
         };
         elem.appendChild(edit);
 
@@ -46,14 +55,14 @@ export class BookController {
         remove.className = 'remove';
         remove.textContent = 'Remove';
         remove.onclick = () => {
-            let child = document.getElementById(book.id);
+            let child = document.getElementById(this.book.id);
             document.getElementById('books').removeChild(child);
         };
         elem.appendChild(remove);
 
         document.getElementById('books').appendChild(elem);
 
-        if(focus) this.enableEdit(book.id);
+        if (focusEdit) this.enableEdit(this.book.id);
     }
 
 }
