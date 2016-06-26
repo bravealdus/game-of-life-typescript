@@ -1,0 +1,33 @@
+{
+  "name": "bookstore-demo",
+  "version": "1.0.0",
+  "description": "Demo of a front end of a simple bookstore, with ES6",
+  "scripts": {
+    "postinstall": "typings install",
+    "serve": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bravealdus/bookstore-demo.git"
+  },
+  "author": "Ivan Roth <brave.aldus@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-polyfill": "^6.9.1",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.13.0",
+    "browserify": "^13.0.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-typescript": "^2.13.6",
+    "http-server": "^0.9.0",
+    "jquery": "^3.0.0",
+    "node-sass": "^3.8.0",
+    "tsify": "^0.16.0",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
