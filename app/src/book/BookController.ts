@@ -4,10 +4,20 @@ import { Book } from './BookModel';
 export class BookController {
 
     book: Book;
+    isEditActive: boolean;
 
-    constructor(book: Book, focusEdit: boolean) {
+    // HTML elements
+    editButton: HTMLElement;
+    removeButton: HTMLElement;
+    nameInput: HTMLTextAreaElement;
+    priceInput: HTMLTextAreaElement;
+
+    constructor(book: Book, forceEdit: boolean) {
         this.book = book;
-        this.createNewElement(focusEdit);
+        this.isEditActive = false;
+        this.createNewElement();
+
+        if (forceEdit) this.toggleEdit();
     }
 
     bookTemplate(book: any) {
@@ -17,52 +27,56 @@ export class BookController {
             <label for="price">USD</label>
             <input id="${book.id}-price" class="price" name="price"
             type="text" value="${book.price}" disabled="disabled">
-            <br><hr>`;
+            <br><hr>
+            <div id="${book.id}-edit" class="edit">Edit</div>
+            <div id="${book.id}-remove" class="remove">Remove</div>
+            `;
     }
 
-    enableEdit(id: string) {
-        let name = (<HTMLTextAreaElement>document.getElementById(`${id}-name`));
-        name.disabled = !name.disabled;
+    toggleEdit() {
+        this.isEditActive = !this.isEditActive;
 
-        let price = (<HTMLTextAreaElement>document.getElementById(`${id}-price`));
-        price.disabled = !price.disabled;
+        this.nameInput.disabled = !this.isEditActive;
+        this.priceInput.disabled = !this.isEditActive;
 
-        let edit = (<HTMLTextAreaElement>document.getElementById(`${id}-edit`));
-        if (!name.disabled) {
-            name.focus();
-            edit.textContent = 'Save';
+        if (this.isEditActive) {
+            this.nameInput.focus();
+            this.editButton.textContent = 'Save';
         } else {
-            edit.textContent = 'Edit';
+            this.editButton.textContent = 'Edit';
         }
     }
 
-    createNewElement(focusEdit: boolean) {
+    createNewElement() {
         let elem = document.createElement('div');
         elem.className = 'book';
         elem.id = this.book.id;
         elem.innerHTML = this.bookTemplate(this.book);
+        document.getElementById('books').appendChild(elem);
 
-        let edit = document.createElement('div');
-        edit.className = 'edit';
-        edit.id = this.book.id + '-edit';
-        edit.textContent = 'Edit';
-        edit.onclick = () => {
-            this.enableEdit(this.book.id);
+        this.editButton = this.getElem('edit');
+        this.removeButton = this.getElem('remove');
+        this.nameInput = this.getEditableElem('name');
+        this.priceInput = this.getEditableElem('price');
+
+        this.editButton.onclick = () => {
+            this.toggleEdit();
         };
-        elem.appendChild(edit);
 
-        let remove = document.createElement('div');
-        remove.className = 'remove';
-        remove.textContent = 'Remove';
-        remove.onclick = () => {
+        this.removeButton.onclick = () => {
             let child = document.getElementById(this.book.id);
             document.getElementById('books').removeChild(child);
         };
-        elem.appendChild(remove);
+    }
 
-        document.getElementById('books').appendChild(elem);
+    private getEditableElem(id: string){
+      return (<HTMLTextAreaElement>document.
+        getElementById(`${this.book.id}-${id}`));
+    }
 
-        if (focusEdit) this.enableEdit(this.book.id);
+    private getElem(id: string){
+      return (<HTMLElement>document.
+        getElementById(`${this.book.id}-${id}`));
     }
 
 }
