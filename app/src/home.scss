@@ -2,14 +2,20 @@ body{
   padding-bottom: 200px;
 }
 
+#books{
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 #addButton {
     position: fixed;
     bottom: 0px;
     right: 0px;
-    padding: 20px;
+    padding: 18px 20px;
     border: none;
     border-radius: 50%;
     background-color: #e51400;
     color: white;
     font-weight: bold;
+    margin: 10px;
 }

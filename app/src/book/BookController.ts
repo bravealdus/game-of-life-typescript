@@ -49,7 +49,7 @@ export let BookController = {
         remove.textContent = 'Remove';
         remove.onclick = () => {
             let child = document.getElementById(book.id);
-            document.body.removeChild(child);
+            document.getElementById('books').removeChild(child);
         };
         elem.appendChild(remove);
 
