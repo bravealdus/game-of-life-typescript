@@ -4,15 +4,10 @@ export class BookController {
     bookTemplate(book: any) {
         return `
             <img src="/images/book.png" alt="" />
-
-            <textarea id="${book.id}-name" class="name" disabled>
-              ${book.name}
-            </textarea>
-
+            <textarea id="${book.id}-name" class="name" disabled>${book.name}</textarea>
             <label for="price">USD</label>
             <input id="${book.id}-price" class="price" name="price"
             type="text" value="${book.price}" disabled="disabled">
-
             <br><hr>`;
     }
 

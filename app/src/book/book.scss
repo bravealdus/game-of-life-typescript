@@ -1,12 +1,13 @@
 .book {
     box-sizing: border-box;
-    width: 95%;
+    max-width: 300px;
     border: 1px solid gray;
     box-shadow: 1px 1px 3px #888;
-    border-top: 10px solid green;
+    border-top: 10px solid #3369E8;
     min-height: 250px;
     padding: 10px;
     margin: 10px;
+
     img {
         display: block;
         margin: 10px auto;
@@ -40,5 +41,8 @@
         text-align: left;
         cursor: pointer;
         float: left;
+    }
+    .edit, .remove {
+      color: #3369E8;
     }
 }
