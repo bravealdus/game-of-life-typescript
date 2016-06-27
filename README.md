@@ -1,7 +1,5 @@
-# bookstore-demo
-Demo of a front end of a simple bookstore, with ES6
+# game-of-life-typescript
 
-[Steps]
 - clone this repo
 - npm install
 - gulp serve
