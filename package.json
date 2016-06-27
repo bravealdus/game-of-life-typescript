@@ -4,7 +4,7 @@
   "description": "Demo of a front end of a simple bookstore, with ES6",
   "scripts": {
     "postinstall": "typings install",
-    "serve": "http-server",
+    "start": "http-server",
     "build": "cp app/index.html app/style.css app/bundle.js public"
   },
   "repository": {
