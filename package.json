@@ -4,7 +4,8 @@
   "description": "Demo of a front end of a simple bookstore, with ES6",
   "scripts": {
     "postinstall": "typings install",
-    "serve": "http-server"
+    "serve": "http-server",
+    "build": "cp app/index.html app/style.css app/bundle.js public"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,8 @@
     "typings": "^1.3.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "http-server": "^0.9.0"
   }
 }

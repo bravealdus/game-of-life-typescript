@@ -1,0 +1,5 @@
+body{padding-bottom:200px;font-family:'Roboto Condensed', sans-serif}h1.main{text-align:center;font-size:3em}
+
+.alive{background-color:green !important}
+
+#grid{padding:20px}.gridPosition{width:10px;height:10px;background-color:#333;border:1px solid #222;float:left}.row{clear:left}

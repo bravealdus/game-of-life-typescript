@@ -32,7 +32,6 @@ window.onload = () => {
     let manualTick = new CustomEvent('manual-tick');
     document.getElementById('tickButton').onclick = () => {
         document.getElementById('print-alives').innerHTML = '';
-        document.getElementById('print-deads').innerHTML = '';
 
         grid.tick();
     }

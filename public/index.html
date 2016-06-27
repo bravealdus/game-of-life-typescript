@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Testing Server</title>
+
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <h1 class="main">Game of Life</h1>
+
+    <div id="grid"></div>
+
+    <div class="row"></div>
+    <br><br><br>
+
+    <textarea id="manual-input" rows="8" cols="40">
+        1, 1
+        1, 0
+        1, 2
+    </textarea>
+    <button type="button" id="inputButton">Input</button>
+    <br>
+    <button type="button" id="tickButton">Tick</button>
+
+    <br>
+    <h4>Alives</h4>
+    <div id="print-alives"></div>
+
+    <script src="bundle.js" charset="utf-8"></script>
+</body>
+
+</html>
