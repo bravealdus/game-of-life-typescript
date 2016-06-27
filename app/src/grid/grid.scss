@@ -1,0 +1,16 @@
+
+
+#grid{
+    padding: 20px;
+}
+
+.gridPosition {
+    width: 10px;
+    height: 10px;
+    background-color: #333;
+    border: 1px solid #222;
+    float: left;
+}
+.row {
+  clear: left;
+}

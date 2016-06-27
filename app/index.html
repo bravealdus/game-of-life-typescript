@@ -13,10 +13,25 @@
 </head>
 
 <body>
+    <h1 class="main">Game of Life</h1>
 
-    <h1 class="main">Available Books</h1>
-    <button type="button" id="addButton">+</button>
-    <div id="books"></div>
+    <div id="grid"></div>
+
+    <div class="row"></div>
+    <br><br><br>
+
+    <textarea id="manual-input" rows="8" cols="40">
+        1, 1
+        1, 0
+        1, 2
+    </textarea>
+    <button type="button" id="inputButton">Input</button>
+    <br>
+    <button type="button" id="tickButton">Tick</button>
+
+    <br>
+    <h4>Alives</h4>
+    <div id="print-alives"></div>
 
     <script src="bundle.js" charset="utf-8"></script>
 </body>

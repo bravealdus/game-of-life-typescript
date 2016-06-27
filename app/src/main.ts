@@ -1,27 +1,39 @@
 
-import { BookService } from './api/BookService';
-import { BookController } from './book/BookController';
-import { Book } from './book/BookModel';
+import { CellController } from './cell/CellController';
+import { GridController } from './grid/GridController';
+
 
 window.onload = () => {
-    console.log('Init App');
 
-    let bookService = new BookService('/fixture/books.json');
+    let grid = new GridController('grid');
 
-    bookService.getBooks().then(res => {
-        res.map(function(book: Book) {
-            new BookController(book, false);
+    document.getElementById('inputButton').onclick = () => {
+
+      document.getElementById('grid').innerHTML = '';
+
+      let elem = document.createElement('div');
+      elem.id = 'grid' + Math.random();
+      document.getElementById('grid').appendChild(elem);
+
+      grid = new GridController(elem.id);
+
+        grid.fillGrid(() => {
+            let textArea = <HTMLInputElement>document.getElementById('manual-input');
+            let lines = textArea.value.split("\n");
+            for (let line of lines) {
+                let aux = line.split(',');
+                if (aux.length === 2) {
+                    grid.getCell(Number(aux[0]), Number(aux[1])).lives();
+                }
+            }
         });
-    });
-
-    document.getElementById('addButton').onclick = () => {
-        let book = {
-            id: `${Math.floor((Math.random() * 100) + 1)}-book`,
-            name: 'Book name',
-            price: 0.00,
-            obj: function() { return this; }
-        };
-        new BookController(<Book>book.obj(), true);
     }
 
+    let manualTick = new CustomEvent('manual-tick');
+    document.getElementById('tickButton').onclick = () => {
+        document.getElementById('print-alives').innerHTML = '';
+        document.getElementById('print-deads').innerHTML = '';
+
+        grid.tick();
+    }
 }

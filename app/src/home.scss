@@ -7,21 +7,3 @@ h1.main {
     text-align: center;
     font-size: 3em;
 }
-
-#books{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-#addButton {
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-    padding: 18px 20px;
-    border: none;
-    border-radius: 50%;
-    background-color: #D50F25;
-    color: white;
-    font-weight: bold;
-    margin: 10px;
-}
